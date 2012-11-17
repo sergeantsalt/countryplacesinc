@@ -11,7 +11,50 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121115055211) do
+ActiveRecord::Schema.define(:version => 20121117045702) do
+
+  create_table "images", :force => true do |t|
+    t.integer "propid",                    :default => 0,      :null => false
+    t.string  "title",       :limit => 50, :default => "",     :null => false
+    t.string  "description",               :default => "",     :null => false
+    t.string  "fname",                     :default => "",     :null => false
+    t.string  "type",        :limit => 5,  :default => ".jpg", :null => false
+    t.string  "path",                      :default => "",     :null => false
+    t.boolean "remote",                    :default => false,  :null => false
+    t.integer "owner",                     :default => 0,      :null => false
+    t.integer "ordering",    :limit => 1,  :default => 0,      :null => false
+    t.boolean "published",                 :default => true,   :null => false
+    t.string  "ip_source",   :limit => 30
+  end
+
+  add_index "images", ["propid"], :name => "propid"
+  add_index "images", ["type"], :name => "type"
+
+  create_table "listings", :force => true do |t|
+    t.string   "street_num",        :limit => 20,                                 :default => "",    :null => false
+    t.string   "street",                                                          :default => "",    :null => false
+    t.string   "title",             :limit => 100,                                :default => "",    :null => false
+    t.text     "short_description",                                                                  :null => false
+    t.text     "description",                                                                        :null => false
+    t.string   "city",              :limit => 55,                                 :default => "",    :null => false
+    t.integer  "state",             :limit => 1,                                  :default => 0,     :null => false
+    t.string   "postcode",          :limit => 20,                                 :default => "",    :null => false
+    t.string   "county",            :limit => 55,                                 :default => "",    :null => false
+    t.string   "latitude",                                                        :default => "0",   :null => false
+    t.string   "longitude",                                                       :default => "0",   :null => false
+    t.string   "address",                                                         :default => "",    :null => false
+    t.decimal  "price",                            :precision => 10, :scale => 2, :default => 0.0,   :null => false
+    t.float    "acres",                                                           :default => 0.0,   :null => false
+    t.integer  "hits",                                                            :default => 0,     :null => false
+    t.boolean  "featured",                                                        :default => false, :null => false
+    t.datetime "created_at",                                                                         :null => false
+    t.datetime "updated_at",                                                                         :null => false
+  end
+
+  add_index "listings", ["city"], :name => "city"
+  add_index "listings", ["postcode"], :name => "postcode"
+  add_index "listings", ["price", "acres", "city"], :name => "price"
+  add_index "listings", ["state"], :name => "locstate"
 
   create_table "roles", :force => true do |t|
     t.string   "name"
