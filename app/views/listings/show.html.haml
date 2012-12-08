@@ -3,6 +3,10 @@
   %h1=t '.title', :default => model_class.model_name.human
 
 %p
+  %strong= model_class.human_attribute_name(:title) + ':'
+  %br
+  = @listing.title
+%p
   %strong= model_class.human_attribute_name(:street_num) + ':'
   %br
   = @listing.street_num
@@ -10,10 +14,6 @@
   %strong= model_class.human_attribute_name(:street) + ':'
   %br
   = @listing.street
-%p
-  %strong= model_class.human_attribute_name(:title) + ':'
-  %br
-  = @listing.title
 %p
   %strong= model_class.human_attribute_name(:short_description) + ':'
   %br

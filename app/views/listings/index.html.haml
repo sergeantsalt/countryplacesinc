@@ -26,10 +26,10 @@
   %tbody
     - @listings.each do |listing|
       %tr
-        %td= link_to listing.id, listing_path(listing)
+        %td= listing.id
+        %td= link_to listing.title, listing_path(listing)
         %td= listing.street_num
         %td= listing.street
-        %td= listing.title
         %td= listing.short_description
         / %td= listing.description
         %td= listing.city
