@@ -1,0 +1,33 @@
+%h1 StaticPages#home
+%p Find me in app/views/static_pages/home.html.haml
+%table.table.table-striped
+  / %thead
+  /   %tr
+  /     %th= model_class.human_attribute_name(:id)
+  /     %th= model_class.human_attribute_name(:street_num)
+  /     %th= model_class.human_attribute_name(:street)
+  /     %th= model_class.human_attribute_name(:title)
+  /     %th= model_class.human_attribute_name(:short_description)
+  /     / %th= model_class.human_attribute_name(:description)
+  /     %th= model_class.human_attribute_name(:city)
+  /     %th= model_class.human_attribute_name(:state)
+  /     / %th= model_class.human_attribute_name(:postcode)
+  /     / %th= model_class.human_attribute_name(:county)
+  /     / %th= model_class.human_attribute_name(:latitude)
+  /     / %th= model_class.human_attribute_name(:longitude)
+  /     / %th= model_class.human_attribute_name(:address)
+  /     / %th= model_class.human_attribute_name(:price)
+  /     / %th= model_class.human_attribute_name(:acres)
+  /     / %th= model_class.human_attribute_name(:hits)
+  /     / %th= model_class.human_attribute_name(:featured)
+  /     / %th= model_class.human_attribute_name(:created_at)
+  /     %th=t '.actions', :default => t("helpers.actions")
+  %tbody
+    - @listings.each do |listing|
+      %tr
+        %td= link_to listing.title, listing_path(listing)
+        %td= listing.street_num
+        %td= listing.street
+        %td= listing.short_description
+        %td= listing.city
+        %td= listing.state

@@ -1,12 +1,18 @@
 Countryplacesinc::Application.routes.draw do
 
+  match '/financing', to: 'static_pages#financing'
+  match '/about', to: 'static_pages#about'
+  match '/contact', to: 'static_pages#contact'
+
   resources :listings
 
 
   authenticated :user do
-    root :to => 'home#index'
+    # root :to => 'home#index'
+    root :to => 'static_pages#home'
   end
-  root :to => 'home#index'
+  # root :to => 'home#index'
+  root :to => 'static_pages#home'
   devise_for :users
   resources :users
 

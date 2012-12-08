@@ -44,6 +44,7 @@ gem 'jquery-rails'
 # gem "less-rails"
 # gem "twitter-bootstrap-rails"
 
+gem "thin"
 gem "mysql"
 gem "haml", ">= 3.1.7"
 gem "haml-rails", ">= 0.3.5", :group => :development
