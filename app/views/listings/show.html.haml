@@ -1,0 +1,73 @@
+- model_class = Listing
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human
+
+%p
+  %strong= model_class.human_attribute_name(:street_num) + ':'
+  %br
+  = @listing.street_num
+%p
+  %strong= model_class.human_attribute_name(:street) + ':'
+  %br
+  = @listing.street
+%p
+  %strong= model_class.human_attribute_name(:title) + ':'
+  %br
+  = @listing.title
+%p
+  %strong= model_class.human_attribute_name(:short_description) + ':'
+  %br
+  = @listing.short_description
+%p
+  %strong= model_class.human_attribute_name(:description) + ':'
+  %br
+  = @listing.description
+%p
+  %strong= model_class.human_attribute_name(:city) + ':'
+  %br
+  = @listing.city
+%p
+  %strong= model_class.human_attribute_name(:state) + ':'
+  %br
+  = @listing.state
+%p
+  %strong= model_class.human_attribute_name(:postcode) + ':'
+  %br
+  = @listing.postcode
+%p
+  %strong= model_class.human_attribute_name(:county) + ':'
+  %br
+  = @listing.county
+%p
+  %strong= model_class.human_attribute_name(:latitude) + ':'
+  %br
+  = @listing.latitude
+%p
+  %strong= model_class.human_attribute_name(:longitude) + ':'
+  %br
+  = @listing.longitude
+%p
+  %strong= model_class.human_attribute_name(:address) + ':'
+  %br
+  = @listing.address
+%p
+  %strong= model_class.human_attribute_name(:price) + ':'
+  %br
+  = @listing.price
+%p
+  %strong= model_class.human_attribute_name(:acres) + ':'
+  %br
+  = @listing.acres
+%p
+  %strong= model_class.human_attribute_name(:hits) + ':'
+  %br
+  = @listing.hits
+%p
+  %strong= model_class.human_attribute_name(:featured) + ':'
+  %br
+  = @listing.featured
+
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")), listings_path, :class => 'btn'
+  = link_to t('.edit', :default => t("helpers.links.edit")), edit_listing_path(@listing), :class => 'btn'
+  = link_to t('.destroy', :default => t("helpers.links.destroy")), listing_path(@listing), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

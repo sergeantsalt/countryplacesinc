@@ -1,5 +1,8 @@
 Countryplacesinc::Application.routes.draw do
 
+  resources :listings
+
+
   authenticated :user do
     root :to => 'home#index'
   end

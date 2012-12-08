@@ -1,0 +1,20 @@
+= simple_form_for @listing, :html => { :class => 'form-horizontal' } do |f|
+  = f.input :street_num
+  = f.input :street
+  = f.input :title
+  = f.input :short_description
+  = f.input :description
+  = f.input :city
+  = f.input :state
+  = f.input :postcode
+  = f.input :county
+  = f.input :latitude
+  = f.input :longitude
+  = f.input :address
+  = f.input :price
+  = f.input :acres
+  = f.input :hits
+  = f.input :featured
+  .form-actions
+    = f.button :submit, :class => 'btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), listings_path, :class => 'btn'
