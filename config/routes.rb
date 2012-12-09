@@ -1,5 +1,9 @@
 Countryplacesinc::Application.routes.draw do
 
+  get "registrations/new"
+
+  get "registrations/edit"
+
   match '/financing', to: 'static_pages#financing'
   match '/about', to: 'static_pages#about'
   match '/contact', to: 'static_pages#contact'
@@ -11,7 +15,7 @@ Countryplacesinc::Application.routes.draw do
     delete '/users', to: 'devise/registrations#destroy'
   end
 
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => "users/registrations"}
   resources :users
 
   devise_scope :user do
@@ -19,10 +23,9 @@ Countryplacesinc::Application.routes.draw do
     post '/login', to: 'devise/sessions#create'
     delete '/sign_out', to: 'devise/sessions#destroy'
 
-    get '/cancel_reg', to: 'devise/registrations#cancel'
-    get '/new_user', to: 'devise/registrations#new'
-    post '/users', to: 'static_pages#home'
-    get '/users/edit', to: 'devise/registrations#edit'
+    match '/new_user', to: 'users/registrations#new'
+    # post '/users', to: 'static_pages#home'
+    # get '/users/edit', to: 'devise/registrations#edit'
   end
 
   root :to => 'static_pages#home'

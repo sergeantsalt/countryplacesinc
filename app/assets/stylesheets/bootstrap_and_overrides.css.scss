@@ -56,6 +56,14 @@ textarea {
   margin-bottom: 10px;
 }
 
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
@@ -81,9 +89,6 @@ h2 {
 p {
   font-size: 1.1em;
   line-height: 1.7em;
-  br {
-    
-  }
 }
 
 /* header */

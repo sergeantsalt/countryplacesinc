@@ -1,2 +1,26 @@
-%h1 StaticPages#about
-%p Find me in app/views/static_pages/about.html.haml
+%h1 Country Places Family
+%table.table.table-condensed
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td.span4
+          = image_tag( "1_1315424380.jpg" )
+        %td.span8
+          %table.table.table-condensed
+            %tbody
+              %tr
+                %td.span4
+                  %h4= user.name
+                %td.offset2
+                  %p.text-right= "Phone: "
+                %td.span4
+                  %p= user.phone
+              %tr
+                %td.span4
+                  %strong= user.job_description
+                %td.offset2
+                  %p.text-right= "Email: "
+                %td.span4
+                  %p= user.email        
+              %tr
+                %td= user.bio
