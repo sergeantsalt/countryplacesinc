@@ -19,11 +19,11 @@ Countryplacesinc::Application.routes.draw do
     post '/login', to: 'devise/sessions#create'
     delete '/sign_out', to: 'devise/sessions#destroy'
 
-    # match '/new_user', to: 'users/registrations#new'
-    # match '/users/:id/edit/', to: 'users/registrations#edit'
-    # post '/users', to: 'static_pages#home'
-    # get '/users/:id/edit', to: 'users/registrations#edit'
+    match '/new_user', to: 'users/registrations#new'
+    match '/account', to: 'users/registrations#edit'
   end
+
+  # post '/users', to: 'static_pages#home'
 
   root :to => 'static_pages#home'
   

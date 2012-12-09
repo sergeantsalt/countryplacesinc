@@ -23,7 +23,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     respond_to do |format|      
       if @user.save!
-        format.html { redirect_to @user, notice: 'user was successfully created.' }
+        format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "new" }
