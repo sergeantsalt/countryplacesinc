@@ -14,9 +14,9 @@
 ActiveRecord::Schema.define(:version => 20121117045702) do
 
   create_table "images", :force => true do |t|
-    t.integer "listing_id"
+    t.integer "listing_id", :default => 0,    :null => false
     t.string  "filename",                     :null => false
-    t.integer "user_id"
+    t.integer "user_id",    :default => 0,    :null => false
     t.boolean "published",  :default => true, :null => false
   end
 
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(:version => 20121117045702) do
     t.text     "short_description",                                                                  :null => false
     t.text     "description",                                                                        :null => false
     t.string   "city",              :limit => 55,                                 :default => "",    :null => false
-    t.integer  "state",             :limit => 1,                                  :default => 0,     :null => false
+    t.integer  "state_id",          :limit => 1,                                  :default => 0,     :null => false
     t.string   "postcode",          :limit => 20,                                 :default => "",    :null => false
     t.string   "county",            :limit => 55,                                 :default => "",    :null => false
     t.string   "latitude",                                                        :default => "0",   :null => false
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(:version => 20121117045702) do
   add_index "listings", ["city"], :name => "city"
   add_index "listings", ["postcode"], :name => "postcode"
   add_index "listings", ["price", "acres", "city"], :name => "price"
-  add_index "listings", ["state"], :name => "locstate"
+  add_index "listings", ["state_id"], :name => "locstate"
 
   create_table "roles", :force => true do |t|
     t.string   "name"
@@ -59,6 +59,11 @@ ActiveRecord::Schema.define(:version => 20121117045702) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
+
+  create_table "states", :force => true do |t|
+    t.string "name",                 :default => "", :null => false
+    t.string "mc_name", :limit => 2, :default => "", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

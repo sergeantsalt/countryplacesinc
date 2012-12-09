@@ -7,13 +7,18 @@ Countryplacesinc::Application.routes.draw do
   resources :listings
 
   authenticated :user do
-    # root :to => 'home#index'
-    root :to => 'static_pages#home'
+    devise_for :users
+    resources :users
   end
-  # root :to => 'home#index'
+
+  devise_scope :user do
+    get '/login', to: 'devise/sessions#new'
+    post '/login', to: 'devise/sessions#create'
+    delete '/sign_out', to: 'devise/sessions#destroy'
+  end
+
   root :to => 'static_pages#home'
-  devise_for :users
-  resources :users
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

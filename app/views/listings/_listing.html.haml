@@ -4,6 +4,9 @@
     %row
       %strong= link_to listing.title, listing_path(listing)
     %row
-      %p= listing.street + ', ' + listing.city + ' ' + listing.state.to_s
+      %p
+        = listing.street
+        %br
+        = listing.city + ', ' + listing.state.name + ' ' + listing.postcode.to_s
     %row
       %p= listing.short_description[0..120].chomp('.')

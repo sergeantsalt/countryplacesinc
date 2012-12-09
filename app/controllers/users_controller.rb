@@ -30,4 +30,8 @@ class UsersController < ApplicationController
       redirect_to users_path, :notice => "Can't delete yourself."
     end
   end
+
+  def user_sign_in
+
+  end
 end
