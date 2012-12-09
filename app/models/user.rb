@@ -17,4 +17,6 @@ class User < ActiveRecord::Base
 
   has_many :images
 
+  mount_uploader :avatar, ImageUploader
+
 end

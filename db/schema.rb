@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121117045702) do
+ActiveRecord::Schema.define(:version => 20121209105711) do
 
   create_table "images", :force => true do |t|
     t.integer "listing_id", :default => 0,    :null => false
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(:version => 20121117045702) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "name"
+    t.string   "avatar"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

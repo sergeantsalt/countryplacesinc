@@ -7,14 +7,22 @@ Countryplacesinc::Application.routes.draw do
   resources :listings
 
   authenticated :user do
-    devise_for :users
-    resources :users
+    put '/users', to: 'devise/registrations#update'
+    delete '/users', to: 'devise/registrations#destroy'
   end
+
+  devise_for :users
+  resources :users
 
   devise_scope :user do
     get '/login', to: 'devise/sessions#new'
     post '/login', to: 'devise/sessions#create'
     delete '/sign_out', to: 'devise/sessions#destroy'
+
+    get '/cancel_reg', to: 'devise/registrations#cancel'
+    get '/new_user', to: 'devise/registrations#new'
+    post '/users', to: 'static_pages#home'
+    get '/users/edit', to: 'devise/registrations#edit'
   end
 
   root :to => 'static_pages#home'
