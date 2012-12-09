@@ -15,4 +15,6 @@ class User < ActiveRecord::Base
 
   attr_accessible :role_ids, :as => :admin
 
+  has_many :images
+
 end

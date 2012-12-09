@@ -14,14 +14,21 @@
 ActiveRecord::Schema.define(:version => 20121117045702) do
 
   create_table "images", :force => true do |t|
-    t.integer "listing_id"
-    t.string  "filename",                     :null => false
-    t.integer "user_id"
-    t.boolean "published",  :default => true, :null => false
+    t.integer "propid",                    :default => 0,      :null => false
+    t.string  "title",       :limit => 50, :default => "",     :null => false
+    t.string  "description",               :default => "",     :null => false
+    t.string  "fname",                     :default => "",     :null => false
+    t.string  "type",        :limit => 5,  :default => ".jpg", :null => false
+    t.string  "path",                      :default => "",     :null => false
+    t.boolean "remote",                    :default => false,  :null => false
+    t.integer "owner",                     :default => 0,      :null => false
+    t.integer "ordering",    :limit => 1,  :default => 0,      :null => false
+    t.boolean "published",                 :default => true,   :null => false
+    t.string  "ip_source",   :limit => 30
   end
 
-  add_index "images", ["listing_id"], :name => "listing_id"
-  add_index "images", ["user_id"], :name => "user_id"
+  add_index "images", ["propid"], :name => "propid"
+  add_index "images", ["type"], :name => "type"
 
   create_table "listings", :force => true do |t|
     t.string   "street_num",        :limit => 20,                                 :default => "",    :null => false
