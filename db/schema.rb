@@ -42,12 +42,15 @@ ActiveRecord::Schema.define(:version => 20121209172246) do
     t.boolean  "featured",                                                        :default => false, :null => false
     t.datetime "created_at",                                                                         :null => false
     t.datetime "updated_at",                                                                         :null => false
+    t.boolean  "published",                                                       :default => false, :null => false
   end
 
-  add_index "listings", ["city"], :name => "city"
-  add_index "listings", ["postcode"], :name => "postcode"
-  add_index "listings", ["price", "acres", "city"], :name => "price"
-  add_index "listings", ["state_id"], :name => "locstate"
+  add_index "listings", ["acres", "id"], :name => "acres"
+  add_index "listings", ["featured", "id"], :name => "featured"
+  add_index "listings", ["hits", "id"], :name => "hits"
+  add_index "listings", ["price", "id"], :name => "price"
+  add_index "listings", ["published", "id"], :name => "published"
+  add_index "listings", ["state_id", "id"], :name => "state_id"
 
   create_table "roles", :force => true do |t|
     t.string   "name"

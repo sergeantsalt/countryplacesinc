@@ -1,6 +1,7 @@
 class StaticPagesController < ApplicationController
   def home
-    @listings = Listing.limit(10)
+    @listings = Listing.where( featured: true, published: true).page(params[:page]).per(5)
+    @listings = @listings.order("price ASC")
   end
 
   def financing
@@ -12,4 +13,9 @@ class StaticPagesController < ApplicationController
 
   def contact
   end
+
+  def download
+    
+  end
+
 end

@@ -2,7 +2,10 @@
   %td.span2= image_tag(listing.images.first.filename)
   %td
     %row
-      %strong= link_to listing.title, listing_path(listing)
+      %strong.span6
+        = link_to listing.title, listing_path(listing)
+      %strong.span6.text-right  
+        = "$" + listing.price.to_s
     %row
       %p
         = listing.street
