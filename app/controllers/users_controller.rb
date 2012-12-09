@@ -1,10 +1,5 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :restrict, :only => :new
-
-  def restrict(password)
-    render :status => 401, :text => "Unauthorized" unless password == "please"
-  end
 
   def index
     authorize! :index, @user, :message => 'Not authorized as an administrator.'

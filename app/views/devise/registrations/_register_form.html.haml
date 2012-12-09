@@ -1,0 +1,11 @@
+= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:multipart => true}) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :email, :required => true, :autofocus => true
+    = f.input :name, :required => true
+    = f.input :avatar
+    = f.input :password, :required => true
+    = f.input :password_confirmation, :required => true
+  .form-actions
+    - button_label = user_signed_in? ? "Submit" : "Signup"
+    = f.button :submit, button_label

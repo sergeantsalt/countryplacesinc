@@ -23,13 +23,14 @@
 puts 'CREATING ROLES'
 Role.create([
   { :name => 'admin' }, 
-  { :name => 'user' }, 
-  { :name => 'VIP' }
+  { :name => 'user' }
 ], :without_protection => true)
-puts 'SETTING UP DEFAULT USER LOGIN'
-user = User.create! :name => 'Alex Nelson', :email => 'alex@countryplacesinc.com', :password => 'please', :password_confirmation => 'please'
-puts 'New user created: ' << user.name
-user2 = User.create! :name => 'Don Busby', :email => 'don@countryplacesinc.com', :password => 'please', :password_confirmation => 'please'
-puts 'New user created: ' << user2.name
-user.add_role :VIP
+# puts 'SETTING UP DEFAULT USER LOGIN'
+# user = User.create! :name => 'Alex Nelson', :email => 'alex@countryplacesinc.com', :password => 'please', :password_confirmation => 'please'
+# puts 'New user created: ' << user.name
+# user2 = User.create! :name => 'Don Busby', :email => 'don@countryplacesinc.com', :password => 'please', :password_confirmation => 'please'
+# puts 'New user created: ' << user2.name
+user = User.find(1)
+user2 = User.find(2)
+user.add_role :admin
 user2.add_role :admin
