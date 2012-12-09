@@ -1,16 +1,12 @@
-%h1 StaticPages#home
-%p Find me in app/views/static_pages/home.html.haml
-%row
-  %aside
-    Hello world!
-  .span8
-    %table.table.table-striped
-      %tbody
-        - @listings.each do |listing|
-          %tr
-            %td= image_tag(listing.images.first.filename)
-            %td= link_to listing.title, listing_path(listing)
-            %td= listing.street
-            %td= listing.short_description[0..120].chomp("\.")
-            %td= listing.city
-            %td= listing.state
+.row.center= image_tag "logo.png"
+.span3
+  %h2
+    Owner Financed Country Land
+  %p
+    Country Places, Inc. has been providing rural and recreational land for sale by owner with 100% Owner Financing since 1983. We specialize in supplying that perfect little piece of land in the country with no down payment and low monthly payments. All of our land is surveyed and worry free. Use our experience to make your land purchase as easy as it can be. We have no pre payment penalties or sneaky balloon payments. $400 is all that's needed to close on raw land and we have made the purchasing process a breeze.
+  %p
+    If you have any questions about our land for sale or buying property by owner financing, please contact us at info@countryplacesinc.com and we'll be happy to answer your questions. Until then, enjoy browsing our AL, KY, VA and East TN land for sale by owner!
+.span7.offset2
+  %table.table.table-striped
+    %tbody
+      = render @listings

@@ -6,7 +6,6 @@ Countryplacesinc::Application.routes.draw do
 
   resources :listings
 
-
   authenticated :user do
     # root :to => 'home#index'
     root :to => 'static_pages#home'

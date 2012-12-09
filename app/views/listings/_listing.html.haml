@@ -1,0 +1,9 @@
+%tr.row
+  %td.span2= image_tag(listing.images.first.filename)
+  %td
+    %row
+      %strong= link_to listing.title, listing_path(listing)
+    %row
+      %p= listing.street + ', ' + listing.city + ' ' + listing.state.to_s
+    %row
+      %p= listing.short_description[0..120].chomp('.')

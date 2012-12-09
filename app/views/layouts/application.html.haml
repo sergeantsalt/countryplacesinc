@@ -18,8 +18,7 @@
     #main{:role => "main"}
     .container
       .content
-        .row
-          .span12
-            = render 'layouts/messages'
-            = yield
+        .row.container
+          = render 'layouts/messages'
+          = yield
         %footer
