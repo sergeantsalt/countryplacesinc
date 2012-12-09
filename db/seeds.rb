@@ -27,9 +27,9 @@ Role.create([
   { :name => 'VIP' }
 ], :without_protection => true)
 puts 'SETTING UP DEFAULT USER LOGIN'
-user = User.create! :name => 'Alex Nelson', :email => 'alex@countryplacesinc.com', :password => 'temp', :password_confirmation => 'temp'
+user = User.create! :name => 'Alex Nelson', :email => 'alex@countryplacesinc.com', :password => 'please', :password_confirmation => 'please'
 puts 'New user created: ' << user.name
-user2 = User.create! :name => 'Don Busby', :email => 'don@countryplacesinc.com', :password => 'temp', :password_confirmation => 'temp'
+user2 = User.create! :name => 'Don Busby', :email => 'don@countryplacesinc.com', :password => 'please', :password_confirmation => 'please'
 puts 'New user created: ' << user2.name
 user.add_role :VIP
 user2.add_role :admin

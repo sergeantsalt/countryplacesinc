@@ -1,10 +1,10 @@
 %h2 Sign up
-= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => "form-vertical", :html => {:multipart => true}}) do |f|
-    = f.error_notification
-    = f.input :name, :autofocus => true
-    = f.input :email, :required => true
-    = f.input :
-    = f.input :password, :require => true
-    = f.input :password_confirmation, :require => true
-    = f.button :submit, "Sign up", :class => "btn-primary"
-    = render "devise/shared/links"
+= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :email, :required => true, :autofocus => true
+    = f.input :password, :required => true
+    = f.input :password_confirmation, :required => true
+  .form-actions
+    = f.button :submit, "Sign up"
+= render "devise/shared/links"

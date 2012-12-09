@@ -46,6 +46,7 @@ gem 'jquery-rails'
 
 gem "thin"
 gem "mysql"
+gem "haml2slim"
 gem "haml", ">= 3.1.7"
 gem "haml-rails", ">= 0.3.5", :group => :development
 gem "hpricot", ">= 0.8.6", :group => :development
