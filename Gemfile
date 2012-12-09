@@ -44,6 +44,8 @@ gem 'jquery-rails'
 # gem "less-rails"
 # gem "twitter-bootstrap-rails"
 
+gem 'kaminari'
+
 gem "thin"
 gem "mysql"
 gem "haml2slim"

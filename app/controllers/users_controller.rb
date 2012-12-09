@@ -13,14 +13,8 @@ class UsersController < ApplicationController
   def update
     authorize! :update, @user, :message => 'Not authorized as an administrator.'
     @user = User.find(params[:id])
-    # if @user.avatar != params[:avatar] && @user.avatar != "default_avatar.jpg"
-    #   img_file = File.open(@user.avatar, "w+")
-    #   if !img_file.nil?
-    #     img_file.f
-    # end
+    old_avatar = @user.avatar
     if @user.update_attributes(params[:user], :as => :admin)
-      @user.avatar = params[:file]
-      @user.avatar = File.open(ImageUploader.store_dir)
       @user.save!
       redirect_to users_path, :notice => 'User updated.'
     else
@@ -31,7 +25,9 @@ class UsersController < ApplicationController
   def destroy
     authorize! :destroy, @user, :message => 'Not authorized as an administrator.'
     user = User.find(params[:id])
+
     unless user == current_user
+      File.delete(user.avatar)
       user.destroy
       redirect_to users_path, :notice => 'User deleted.'
     else

@@ -1,19 +1,15 @@
 Countryplacesinc::Application.routes.draw do
 
-  get "registrations/new"
-
-  get "registrations/edit"
-
   match '/financing', to: 'static_pages#financing'
   match '/about', to: 'static_pages#about'
   match '/contact', to: 'static_pages#contact'
 
   resources :listings
 
-  authenticated :user do
-    put '/users', to: 'devise/registrations#update'
-    delete '/users', to: 'devise/registrations#destroy'
-  end
+  # authenticated :user do
+  #   put '/users', to: 'devise/registrations#update'
+  #   delete '/users', to: 'devise/registrations#destroy'
+  # end
 
   devise_for :users, :controllers => { :registrations => "users/registrations"}
   resources :users
@@ -23,9 +19,10 @@ Countryplacesinc::Application.routes.draw do
     post '/login', to: 'devise/sessions#create'
     delete '/sign_out', to: 'devise/sessions#destroy'
 
-    match '/new_user', to: 'users/registrations#new'
+    # match '/new_user', to: 'users/registrations#new'
+    # match '/users/:id/edit/', to: 'users/registrations#edit'
     # post '/users', to: 'static_pages#home'
-    # get '/users/edit', to: 'devise/registrations#edit'
+    # get '/users/:id/edit', to: 'users/registrations#edit'
   end
 
   root :to => 'static_pages#home'

@@ -1,7 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
 
-
-
   # GET /users/new
   # GET /users/new.json
   def new
@@ -15,10 +13,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /users/1/edit
   def edit
-    @user = current_user
-    if @user.nil?
-      redirect_to new_user_session_path
-    end
+    @user = User.find(params[:id])
   end
 
   # POST /users
