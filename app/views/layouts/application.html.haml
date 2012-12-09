@@ -10,15 +10,14 @@
     = render 'layouts/shim'
     = yield(:head)
   %body
-    %header.navbar.navbar-fixed-top
-      %nav.navbar-inner
-        .container
-          = render 'layouts/navigation'
+    = render 'layouts/header'
     .container= yield(:title)
     #main{:role => "main"}
     .container
       .content
-        .row.container
-          = render 'layouts/messages'
-          = yield
+        .container
+          = render 'layouts/banner'
+          .container
+            = render 'layouts/messages'
+            = yield
         %footer

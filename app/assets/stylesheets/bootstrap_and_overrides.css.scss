@@ -21,16 +21,14 @@ $grayMediumLight: #eaeaea;
   @include box_sizing;
 }
 
-.content {
-  iframe {
-    height: 800px;
-  }
-}
-
 /* universal */
 
 html {
   overflow-y: scroll;
+}
+
+header {
+
 }
 
 body {
@@ -70,6 +68,23 @@ textarea {
   text-align: left;
 }
 
+.banner {
+
+  img {
+    margin-top: 20px;
+  }
+
+  // .container {
+  //   margin-bottom: 30px;
+  // }
+
+  .navbar-search {
+    position: relative;
+    bottom: 45px;
+    right: 35px;
+  }
+}
+
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
@@ -77,7 +92,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 3em;
+  font-size: 2.1em;
   letter-spacing: -2px;
   margin-bottom: 30px;
   padding-left: 30px;
@@ -87,7 +102,7 @@ h1 {
 h2 {
   font-size: 1.7em;
   letter-spacing: -1px;
-  margin-bottom: 20px;
+  margin-bottom: px;
   padding-left: 20px;
   // text-align: center;
   font-weight: normal;
@@ -99,19 +114,21 @@ p {
   line-height: 1.7em;
 }
 
-/* header */
+/* Financing */
 
-// #logo {
-//   float: left;
-//   margin-right: 10px;
-//   font-size: 1.7em;
-//   color: #fff;
-//   text-transform: uppercase;
-//   letter-spacing: -1px;
-//   padding-top: 9px;
-//   font-weight: bold;
-//   line-height: 1;
-// } 
+.finance {
+  h1 {
+    position: relative;
+    right: 20px;
+  }
+
+  iframe {
+    position: relative;
+    height: 700px;
+    bottom: 100px;
+    left: 60px;
+  }
+}
 
 /* sidebar */
 
