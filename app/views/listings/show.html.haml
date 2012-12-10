@@ -2,70 +2,123 @@
 .page-header
   %h1=t '.title', :default => model_class.model_name.human
 
-%p
-  %strong= model_class.human_attribute_name(:title) + ':'
-  %br
-  = @listing.title
-%p
-  %strong= model_class.human_attribute_name(:street_num) + ':'
-  %br
-  = @listing.street_num
-%p
-  %strong= model_class.human_attribute_name(:street) + ':'
-  %br
-  = @listing.street
-%p
-  %strong= model_class.human_attribute_name(:short_description) + ':'
-  %br
-  = @listing.short_description
-%p
-  %strong= model_class.human_attribute_name(:description) + ':'
-  %br
-  = @listing.description
-%p
-  %strong= model_class.human_attribute_name(:city) + ':'
-  %br
-  = @listing.city
-%p
-  %strong= model_class.human_attribute_name(:state) + ':'
-  %br
-  = @listing.state
-%p
-  %strong= model_class.human_attribute_name(:postcode) + ':'
-  %br
-  = @listing.postcode
-%p
-  %strong= model_class.human_attribute_name(:county) + ':'
-  %br
-  = @listing.county
-%p
-  %strong= model_class.human_attribute_name(:latitude) + ':'
-  %br
-  = @listing.latitude
-%p
-  %strong= model_class.human_attribute_name(:longitude) + ':'
-  %br
-  = @listing.longitude
-%p
-  %strong= model_class.human_attribute_name(:address) + ':'
-  %br
-  = @listing.address
-%p
-  %strong= model_class.human_attribute_name(:price) + ':'
-  %br
-  = @listing.price
-%p
-  %strong= model_class.human_attribute_name(:acres) + ':'
-  %br
-  = @listing.acres
-%p
-  %strong= model_class.human_attribute_name(:hits) + ':'
-  %br
-  = @listing.hits
-%p
-  %strong= model_class.human_attribute_name(:featured) + ':'
-  %br
-  = @listing.featured
+.row
+  %h2= [ @listing.title, @listing.street, "-", @listing.acres.to_s, "acres", "in", @listing.city, ",", @listing.state.name].join(" ")
+
+.row
+  .span8
+    - images = @listing.images.where(:order => 1)
+    - if !images.nil?
+      = image_tag(images.first.filename)
+  .span4
+    %table.table.table-condensed
+      %tbody
+        %tr
+          %td.pull-right= "Price: "
+          %td= "$" << @listing.price.to_s.slice(/[0-9]+/)
+        %tr
+          %td.pull-right= "Acreage: "
+          %td= @listing.acres.to_s
+        %tr
+          %td.pull-right= "City: "
+          %td= @listing.city
+        %tr
+          %td.pull-right= "Street: "
+          %td= @listing.street
+        %tr
+          %td.pull-right= "County: "
+          %td= @listing.county
+        %tr
+          %td.pull-right= "State: "
+          %td= @listing.state.name
+
+.row
+  .span10.offset1
+    %h2= "Description"
+    %br
+    %p
+      = @listing.description
+
+
+  
+
+/ .span12
+/   .span8
+/     %h1= @listing.title
+/     .span4
+/       = image_tag @images.first.filename
+/     .span2
+
+/     .span4
+/       .span1
+/         @images.
+/         =
+/   .span4
+
+/ %p
+/   %strong= model_class.human_attribute_name(:title) + ':'
+/   %br
+/   = @listing.title
+/ %p
+/   %strong= model_class.human_attribute_name(:street_num) + ':'
+/   %br
+/   = @listing.street_num
+/ %p
+/   %strong= model_class.human_attribute_name(:street) + ':'
+/   %br
+/   = @listing.street
+/ %p
+/   %strong= model_class.human_attribute_name(:short_description) + ':'
+/   %br
+/   = @listing.short_description
+/ %p
+/   %strong= model_class.human_attribute_name(:description) + ':'
+/   %br
+/   = @listing.description
+/ %p
+/   %strong= model_class.human_attribute_name(:city) + ':'
+/   %br
+/   = @listing.city
+/ %p
+/   %strong= model_class.human_attribute_name(:state) + ':'
+/   %br
+/   = @listing.state
+/ %p
+/   %strong= model_class.human_attribute_name(:postcode) + ':'
+/   %br
+/   = @listing.postcode
+/ %p
+/   %strong= model_class.human_attribute_name(:county) + ':'
+/   %br
+/   = @listing.county
+/ %p
+/   %strong= model_class.human_attribute_name(:latitude) + ':'
+/   %br
+/   = @listing.latitude
+/ %p
+/   %strong= model_class.human_attribute_name(:longitude) + ':'
+/   %br
+/   = @listing.longitude
+/ %p
+/   %strong= model_class.human_attribute_name(:address) + ':'
+/   %br
+/   = @listing.address
+/ %p
+/   %strong= model_class.human_attribute_name(:price) + ':'
+/   %br
+/   = @listing.price
+/ %p
+/   %strong= model_class.human_attribute_name(:acres) + ':'
+/   %br
+/   = @listing.acres
+/ %p
+/   %strong= model_class.human_attribute_name(:hits) + ':'
+/   %br
+/   = @listing.hits
+/ %p
+/   %strong= model_class.human_attribute_name(:featured) + ':'
+/   %br
+/   = @listing.featured
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), listings_path, :class => 'btn'

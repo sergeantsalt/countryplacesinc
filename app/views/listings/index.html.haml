@@ -10,7 +10,10 @@
       %th= "City"
       %th= "State"
       %th= "Short Description"
-      %th=t '.actions', :default => t("helpers.actions")
+      - if user_signed_in? && current_user.has_role?(:admin)
+        %th=t '.actions', :default => t("helpers.actions")
+      - else
+        %th= ""
   %tbody
     - @listings.each do |listing|
       %tr
@@ -19,7 +22,8 @@
         - if !image.nil?
           - filename = image.filename
         %td.span2= link_to image_tag( filename ), listing_path( listing )
-        %td= link_to listing.title, listing_path(listing)
+        %td
+          %strong= link_to listing.title, listing_path(listing)
         %td= listing.street
         %td= listing.city
         %td= listing.state.name

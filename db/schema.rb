@@ -11,13 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121209172246) do
+ActiveRecord::Schema.define(:version => 20121210010557) do
 
   create_table "images", :force => true do |t|
     t.integer "listing_id", :default => 0,    :null => false
     t.string  "filename",                     :null => false
     t.integer "user_id",    :default => 0,    :null => false
     t.boolean "published",  :default => true, :null => false
+    t.integer "order",      :default => 0,    :null => false
   end
 
   add_index "images", ["listing_id"], :name => "listing_id"
