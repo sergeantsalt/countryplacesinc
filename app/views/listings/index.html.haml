@@ -1,22 +1,14 @@
 - model_class = Listing
 .page-header
+.row
   %h1=t '.title', :default => model_class.model_name.human.pluralize
-%table.table.table-striped
-  %thead
-    %tr
-      %th= "Image"
-      %th= "Name"
-      %th= "Street"
-      %th= "City"
-      %th= "State"
-      %th= "Short Description"
-      - if user_signed_in? && current_user.has_role?(:admin)
-        %th=t '.actions', :default => t("helpers.actions")
-      - else
-        %th= ""
-  %tbody
-    = render @listings
-    = paginate @listings
-
-
-= link_to t('.new', :default => t("helpers.links.new")), new_listing_path, :class => 'btn btn-primary'
+  = link_to t('.new', :default => t("helpers.links.new")), new_listing_path, :class => 'btn btn-primary pull-right'
+.row
+  .span4
+    %p= "Hello world!"
+  
+  .span8
+    %table.table.table-striped
+      %tbody
+        = render @listings
+    = paginate @listings, :remote => true

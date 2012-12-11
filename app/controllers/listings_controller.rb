@@ -2,7 +2,7 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
-    @listings = Listing.where(published: true).page(params[:page]).per(5)
+    @listings = Listing.page(params[:page]).per(10)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -59,13 +59,22 @@ class ListingsController < ApplicationController
 
     respond_to do |format|
       if @listing.update_attributes(params[:listing])
-        format.html { redirect_to @listing, notice: 'Listing was successfully updated.' }
-        format.json { head :no_content }
+        if params[:remote] == true
+          format.html { redirect_to action: :same_as_in_view, notice: 'Listing was successfully updated.'}
+        else
+          format.html { redirect_to @listing, notice: 'Listing was successfully updated.' }
+          format.json { head :no_content }
+        end
       else
         format.html { render action: "edit" }
         format.json { render json: @listing.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def update_object(attribute, value)
+    @obj = object.find(params[:id])
+    @obj.update_attribute(attribute, value)
   end
 
   # DELETE /listings/1
