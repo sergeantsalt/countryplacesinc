@@ -2,7 +2,7 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
-    @listings = Listing.all
+    @listings = Listing.where(published: true).page(params[:page]).per(5)
 
     respond_to do |format|
       format.html # index.html.erb

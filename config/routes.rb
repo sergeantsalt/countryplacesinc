@@ -5,6 +5,7 @@ Countryplacesinc::Application.routes.draw do
   match '/contact', to: 'static_pages#contact'
 
   resources :listings
+  get '/listings/:id', to: 'listings#featured', as: 'featured'
 
   # authenticated :user do
   #   put '/users', to: 'devise/registrations#update'
